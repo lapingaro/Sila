@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     private int firstTryIndex, secondTryIndex;
     private int score;
     public TextMeshProUGUI scoreMeshPro;
+    public AudioSource audioSrc;
+    public AudioClip rigthAudio;
+    public AudioClip failAudio;
 
 
 
@@ -158,6 +161,7 @@ public class GameManager : MonoBehaviour
         {
 
             yield return new WaitForSeconds(0.6f);
+            audioSrc.PlayOneShot(rigthAudio);
             //Desable the button
             cardBtns[firstTryIndex].interactable = false;
             cardBtns[secondTryIndex].interactable = false;
@@ -179,9 +183,11 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            audioSrc.PlayOneShot(failAudio);
             // return the card after if the card is not matching then apply the background of the card 
             cardBtns[firstTryIndex].image.sprite = cardBack;
             cardBtns[secondTryIndex].image.sprite = cardBack;
+
 
         }
         //Reset the trying option to allow the user to interact again with the button 
@@ -198,6 +204,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Game finished!");
             Debug.Log("You completed the game in  "  + playerTry + "  Moves ");
+            audioSrc.Stop();
         }
     }
 
