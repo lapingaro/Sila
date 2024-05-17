@@ -5,7 +5,7 @@ using Unity.UI;
 using UnityEngine.UI;
 
 
-public class CardLayout : MonoBehaviour
+public class cardLayout : MonoBehaviour
 {
     [SerializeField]
     private Transform targetdisplay;
