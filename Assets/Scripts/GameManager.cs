@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,10 +20,11 @@ public class GameManager : MonoBehaviour
 
     private string firstTryName, secondTryName;
     private int firstTryIndex, secondTryIndex;
-   
-  
+    private int score;
+    public TextMeshProUGUI scoreMeshPro;
 
-  
+
+
     private void Awake()
     {
         cardsImages = Resources.LoadAll<Sprite>("Sprites/Animals");
@@ -165,7 +167,9 @@ public class GameManager : MonoBehaviour
             cardBtns[secondTryIndex].image.color = new Color(0, 0, 0, 0);
 
             successCount++;
-          
+            score += 10;
+            scoreMeshPro.text = score.ToString();
+
 
 
 
